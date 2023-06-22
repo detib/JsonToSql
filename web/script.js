@@ -12,6 +12,8 @@ function createInsertStatements(data) {
         if (typeof value === 'object') {
           if (Array.isArray(value)) {
             processArray(tableName, value); // Recursively process nested arrays
+          } else if(value == null) {
+            continue;
           } else {
             processObject(key, value)
           }
