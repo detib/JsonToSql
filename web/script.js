@@ -12,6 +12,8 @@ function createInsertStatements(data) {
         if (typeof value === 'object') {
           if (Array.isArray(value)) {
             processArray(tableName, value); // Recursively process nested arrays
+          } else {
+            processObject(key, value)
           }
           continue; // Skip nested objects
         }
@@ -41,7 +43,7 @@ function createInsertStatements(data) {
   for (const tableName in data) {
     if (data.hasOwnProperty(tableName)) {
       const records = data[tableName];
-
+      
       if (typeof records === 'object') {
         if (Array.isArray(records)) {
           processArray(tableName, records);
