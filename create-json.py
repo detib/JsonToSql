@@ -31,10 +31,14 @@ def generate_random_json():
 
     return data
 
+def write_json_to_file(file_path, json_str):
+    with open(file_path, 'w') as sql_file:
+        sql_file.write(json_str)
 
 def main():
     data = generate_random_json()
     json_str = json.dumps(data, indent=4)
+    write_json_to_file("data.json", json_str)
     print(json_str)
 
 
